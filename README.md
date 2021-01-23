@@ -6,7 +6,7 @@ The project demonstrates how you can develop applications with Quarkus Platform 
 Design (DDD). The project is directly based on the well known 
 original [Java DDD sample application](http://dddsample.sourceforge.net) 
 developed by DDD pioneer Eric Evans' company Domain Language and the Swedish 
-software consulting company Citerus and the [Eclipse Cargo Tracker](https://eclipse-ee4j.github.io/cargotracker/) powered by JakartaEE at. The cargo example actually comes from 
+software consulting company Citerus and the [Eclipse Cargo Tracker](https://eclipse-ee4j.github.io/cargotracker/) powered by JakartaEE. The cargo example actually comes from 
 Eric Evans' seminal book on DDD. The original application is written in Spring,
 Hibernate and Jetty whereas the application is built on Quarkus.
 
