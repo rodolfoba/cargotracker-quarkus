@@ -24,7 +24,8 @@ The simplest steps are the following (no IDE required):
 * Get the project source code.
 * Ensure you are running Java 11.
 * As long as you have Maven set up properly, navigate to the project source root and 
-  type: `mvn compile quarkus:dev`
+  type:  
+  `mvn compile quarkus:dev`
 * Go to http://localhost:8080/cargo-tracker
 
 ## Exploring the Application
