@@ -22,7 +22,7 @@ For further details on the project, please visit: https://eclipse-ee4j.github.io
 The simplest steps are the following (no IDE required):
 
 * Get the project source code.
-* Ensure you are running Java 11.
+* Ensure you are running Java 11+.
 * As long as you have Maven set up properly, navigate to the project source root and 
   type:  
   `mvn compile quarkus:dev`
