@@ -1,14 +1,14 @@
-# Eclipse Cargo Tracker - Applied Domain-Driven Design Blueprints for Jakarta EE
+# Cargo Tracker - Applied Domain-Driven Design Blueprints for Quarkus
 
 ## Overview
 
-The project demonstrates how you can develop applications with Jakarta EE using widely adopted architectural best practices like Domain-Driven 
+The project demonstrates how you can develop applications with Quarkus Platform using widely adopted architectural best practices like Domain-Driven 
 Design (DDD). The project is directly based on the well known 
 original [Java DDD sample application](http://dddsample.sourceforge.net) 
 developed by DDD pioneer Eric Evans' company Domain Language and the Swedish 
-software consulting company Citerus. The cargo example actually comes from 
+software consulting company Citerus and the [Eclipse Cargo Tracker](https://eclipse-ee4j.github.io/cargotracker/) powered by JakartaEE at. The cargo example actually comes from 
 Eric Evans' seminal book on DDD. The original application is written in Spring,
-Hibernate and Jetty whereas the application is built on Jakarta EE.
+Hibernate and Jetty whereas the application is built on Quarkus.
 
 The application is an end-to-end system for keeping track of shipping cargo. It 
 has several interfaces described in the following sections.
@@ -19,30 +19,19 @@ For further details on the project, please visit: https://eclipse-ee4j.github.io
  
 ## Getting Started
 
-The [project website](https://eclipse-ee4j.github.io/cargotracker/) has detailed information on how to get started.
-
 The simplest steps are the following (no IDE required):
 
 * Get the project source code.
-* Ensure you are running Java SE 8. The project by default uses Payara 4.1, which supports Java SE 8.
-* Make sure JAVA_HOME is set.
+* Ensure you are running Java 11.
 * As long as you have Maven set up properly, navigate to the project source root and 
-  type: `mvn package cargo:run`
+  type: `mvn compile quarkus:dev`
 * Go to http://localhost:8080/cargo-tracker
-
-To set up in Eclipse, follow these steps:
-
-* Set up [Java SE 8](https://www.azul.com/downloads/zulu-community/?version=java-8-lts), [the 2020-06 release of Eclipse for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) (this is the latest Eclipse IDE version that supports Java SE 8) and [Payara 4.1](https://repo1.maven.org/maven2/fish/payara/distributions/payara/4.1.2.181/payara-4.1.2.181.zip) (Payara 5 is not supported yet. Payara 4.1 only supports Java SE 8). You will also need to set up [Payara Tools](https://marketplace.eclipse.org/content/payara-tools) in Eclipse.
-* Import this code in Eclipse as a Maven project, 
-  Eclipse will do the rest for you. Proceed with clean/building the application.
-* After the project is built (which will take a while the very first time as 
-  Maven downloads dependencies), simply run it via Payara 4.
 
 ## Exploring the Application
 
 After the application runs, it will be available at: 
 http://localhost:8080/cargo-tracker/. Under the hood, the application uses a 
-number of Jakarta EE (Java EE 7) features including JSF, CDI, EJB, JPA, JAX-RS, WebSocket, JSON Processing, Bean Validation and JMS.
+number of Quarkus Extensions including JSF, CDI, JPA, JAX-RS, WebSocket, JSON Processing, Bean Validation and JMS, also JakartaEE and MicroProfile specs.
 
 There are several web interfaces, REST interfaces and a file system scanning
 interface. It's probably best to start exploring the interfaces in the rough
@@ -83,7 +72,7 @@ Sucessfully processed entries are archived under /tmp/archive. Any failed record
 archived under /tmp/failed.
 
 Don't worry about making mistakes. The application is intended to be fairly 
-error tolerant. If you do come across issues, you should [report them](https://github.com/eclipse-ee4j/cargotracker/issues).
+error tolerant. If you do come across issues, you should [report them](https://github.com/rodolfoba/cargotracker-quarkus/issues).
 
 *All data entered is wiped upon application restart, so you can start from 
 a blank slate easily if needed.*
@@ -95,7 +84,7 @@ generally.
 ## Exploring the Code
 
 As mentioned earlier, the real point of the application is demonstrating how to 
-create well architected, effective Jakarta EE applications. To that end, once you 
+create well architected, effective Quarkus applications. To that end, once you 
 have gotten some familiarity with the application functionality the next thing 
 to do is to dig right into the code.
 
@@ -104,45 +93,28 @@ working understanding of DDD. As the name implies, Domain-Driven Design is an
 approach to software design and development that focuses on the core domain and 
 domain logic.
 
-For the most part, it's fine if you are new to Jakarta EE. As long as you have a
-basic understanding of server-side applications, the code should be good enough to get started. For learning Jakarta EE further,
+For the most part, it's fine if you are new to Quarkus. As long as you have a
+basic understanding of server-side applications, the code should be good enough to get started. For learning Quarkus and JakartaEE further,
 we have recommended a few links in the resources section of the project site. Of 
 course, the ideal user of the project is someone who has a basic working 
-understanding both Jakarta EE and DDD. Though it's not our goal to become a kitchen 
-sink example for demonstrating the vast amount of APIs and features in Jakarta EE,
+understanding both JakartaEE and DDD. Though it's not our goal to become a kitchen 
+sink example for demonstrating the vast amount of APIs and features in Quarkus,
 we do use a very representative set. You'll find that you'll learn a fair amount
 by simply digging into the code to see how things are implemented.
 
 ## Exploring the Tests
+Cargo Tracker's testing is done using JUnit and Quarkus.   
 
-Cargo Tracker's testing is done using JUnit and Arquillian. The Arquillian configuration
-uses a [remote container](http://arquillian.org/arquillian-core/#_containers) (Payara 4.1). Therefore, to perform a test you will need to make sure
-to have a container running. 
-
-## Testing Locally with Payara
-For testing locally you will first need to run a Payara 4.1 server.
-
-You can do that with the following script:
+## Testing Locally with Quarkus
+For running the tests: 
 ```shell script
-wget https://repo1.maven.org/maven2/fish/payara/distributions/payara/4.1.2.181/payara-4.1.2.181.zip
-unzip payara-4.1.2.181.zip && cd payara41/bin
-./asadmin start-domain
-```
-
-Now for running the tests: 
-```shell script
-mvn -Ppayara -DskipTests=false test
+mvn test
 ```
 
 ## Contributing
 This project complies with the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html). You can use the [google-java-format](https://github.com/google/google-java-format) tool to help you comply with the Google Java Style Guide. You can use the tool with most major IDEs such as Eclipse and IntelliJ.
 
 ## Known Issues
-* If you are running older versions of Payara, you will get a log message stating that SSL certificates have expired. This won't get in the way of functionality, but it will
-  stop log messages from being printed to the IDE console. You can solve this issue by manually removing the expired certificates from the Payara domain, as 
-  explained [here](https://github.com/payara/Payara/issues/3038).
-* If you restart the application a few times, you will run into a bug causing a spurious deployment failure. While the problem can be annoying, it's harmless.
-  Just re-run the application (make sure to completely shut down Payara first).
 * Sometimes when the server is not shut down correctly or there is a locking/permissions issue, the Derby database that 
   the application uses get's corrupted, resulting in strange database errors. If 
   this occurs, you will need to stop the application and clean the database. You 
